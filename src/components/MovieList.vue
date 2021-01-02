@@ -4,8 +4,8 @@
             class="item"
             v-for="movie in movies"
             :key="movie.id"
-            data-movie-id
-            data-movie-title
+            :data-movie-id="movie.id"
+            :data-movie-title="movie.title"
         >
             <div
                 class="poster"
