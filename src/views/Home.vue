@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <img alt="Vue logo" src="../assets/logo.png" />
-        <movie-list :movies="movies"></movie-list>
+        <movie-list></movie-list>
     </div>
 </template>
 
@@ -13,11 +13,6 @@ export default {
     name: "Home",
     components: {
         MovieList,
-    },
-    data: function () {
-        return {
-            movies: ["foo", "bar", "baz"],
-        };
     },
 };
 </script>

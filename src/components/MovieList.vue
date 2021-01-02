@@ -1,37 +1,63 @@
 <template>
-    <div class="container">
-        <ul v-for="movie in movies" :key="movie.id">
-            <li class="item" data-movie-id data-movie-title>
-                <div
-                    class="poster"
-                    style="position: relative; display: inline-block"
-                >
-                    <!-- <img
-                        src="{{base_url}}{{poster_size}}{{poster_path}}"
-                        class="img-responsive"
-                    /> -->
-                    <div class="save">
-                        <i class="fa fa-plus save-movie"></i>
-                    </div>
+    <ul class="container">
+        <li
+            class="item"
+            v-for="movie in movies"
+            :key="movie.id"
+            data-movie-id
+            data-movie-title
+        >
+            <div
+                class="poster"
+                style="position: relative; display: inline-block"
+            >
+                <img
+                    :src="baseUrl + posterSize + movie.poster_path"
+                    class="img-responsive"
+                />
+                <div class="save">
+                    <i class="fa fa-plus save-movie"></i>
                 </div>
-                <div class="">
-                    <!-- <h4>{{ title }}</h4>
-                    Release Date: {{ release_date }} <br />
-                    Score: <b>{{ vote_average }}</b> <br /> -->
-                    <button type="button" class="save-movie btn btn-secondary">
-                        Add to Favorites
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </div>
+            </div>
+            <div class="">
+                <h4>{{ movie.title }}</h4>
+                Release Date: {{ movie.release_date }} <br />
+                Score: <b>{{ movie.vote_average }}</b> <br />
+                <button type="button" class="save-movie btn btn-secondary">
+                    Add to Favorites
+                </button>
+            </div>
+        </li>
+    </ul>
 </template>
 
 <script>
 export default {
     name: "MovieList",
-    props: {
-        movies: Array,
+    props: {},
+    data: function () {
+        return {
+            movies: [],
+            baseUrl: "",
+            posterSize: "",
+        };
+    },
+    created() {
+        fetch(
+            "https://api.themoviedb.org/3/configuration?api_key=00b1a245c429c285c83f95fbb86180be"
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.baseUrl = data.images.base_url;
+                this.posterSize = data.images.poster_sizes[5];
+                return fetch(
+                    "https://api.themoviedb.org/3/movie/now_playing?api_key=00b1a245c429c285c83f95fbb86180be"
+                );
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                this.movies = data.results;
+            });
     },
 };
 </script>
