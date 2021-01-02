@@ -1,0 +1,152 @@
+<template>
+    <div class="container">
+        <ul v-for="movie in movies" :key="movie.id">
+            <li class="item" data-movie-id data-movie-title>
+                <div
+                    class="poster"
+                    style="position: relative; display: inline-block"
+                >
+                    <!-- <img
+                        src="{{base_url}}{{poster_size}}{{poster_path}}"
+                        class="img-responsive"
+                    /> -->
+                    <div class="save">
+                        <i class="fa fa-plus save-movie"></i>
+                    </div>
+                </div>
+                <div class="">
+                    <!-- <h4>{{ title }}</h4>
+                    Release Date: {{ release_date }} <br />
+                    Score: <b>{{ vote_average }}</b> <br /> -->
+                    <button type="button" class="save-movie btn btn-secondary">
+                        Add to Favorites
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "MovieList",
+    props: {
+        movies: Array,
+    },
+};
+</script>
+
+<style lang="scss">
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+html,
+body,
+#map-canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.movies {
+    margin: auto;
+}
+.tweets-container {
+    width: 500px;
+    border: 3px solid blue;
+    border-radius: 5px;
+    margin: auto;
+}
+img.resize {
+    width: 200px;
+    height: auto;
+}
+ul img {
+    border: 3px solid black;
+}
+.poster:hover .save {
+    opacity: 0.4;
+}
+.poster {
+    cursor: pointer;
+
+    img {
+        padding: 1px;
+        width: 150px;
+        height: 200px;
+    }
+    .save {
+        background-color: #000;
+        opacity: 0;
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        color: #fff;
+        font-size: 4em;
+    }
+    .save:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        /* margin-right: -0.25em; */
+    }
+}
+.poster.selected img {
+    border: 3px solid blue;
+}
+.item {
+    display: inline-block;
+    margin: 5px;
+}
+#search-movies-form {
+    margin-top: 20px;
+    input[name="search-movie"] {
+        width: 150px;
+        border-right: 0;
+        border-radius: 5px 0 0 5px;
+    }
+}
+#movie-info-container {
+    position: relative;
+}
+#tweets-container {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    overflow-y: scroll;
+    border: 1px solid #cccccc;
+}
+#saved-movies {
+    font-size: 1.5em;
+    li {
+        list-style-type: none;
+    }
+}
+.carousel-inner .active.left {
+    left: -33%;
+}
+.carousel-inner .active.right {
+    left: 33%;
+}
+.carousel-inner .next {
+    left: 33%;
+}
+.carousel-inner .prev {
+    left: -33%;
+}
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}
+</style>
