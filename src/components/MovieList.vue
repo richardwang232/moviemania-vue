@@ -4,18 +4,15 @@
             class="item"
             v-for="movie in movies"
             :key="movie.id"
-            :data-movie-id="movie.id"
-            :data-movie-title="movie.title"
+            :data-id="movie.id"
+            :data-title="movie.title"
         >
-            <div
-                class="poster"
-                style="position: relative; display: inline-block"
-            >
+            <div class="poster">
                 <img
                     :src="baseUrl + posterSize + movie.poster_path"
                     class="img-responsive"
                 />
-                <div class="save">
+                <div class="save" @click="saveMovie">
                     <i class="fa fa-plus save-movie"></i>
                 </div>
             </div>
@@ -23,7 +20,11 @@
                 <h4>{{ movie.title }}</h4>
                 Release Date: {{ movie.release_date }} <br />
                 Score: <b>{{ movie.vote_average }}</b> <br />
-                <button type="button" class="save-movie btn btn-secondary">
+                <button
+                    type="button"
+                    @click="saveMovie"
+                    class="save-movie btn btn-secondary"
+                >
                     Add to Favorites
                 </button>
             </div>
@@ -58,6 +59,19 @@ export default {
             .then((data) => {
                 this.movies = data.results;
             });
+    },
+    methods: {
+        saveMovie: function (e) {
+            e.preventDefault();
+            const item = e.target.closest(".item");
+            const title = item.dataset.title;
+            const id = item.dataset.id;
+
+            this.$emit("save-movie", {
+                id: id,
+                title: title,
+            });
+        },
     },
 };
 </script>
@@ -97,6 +111,8 @@ ul img {
     opacity: 0.4;
 }
 .poster {
+    position: relative;
+    display: inline-block;
     cursor: pointer;
 
     img {
