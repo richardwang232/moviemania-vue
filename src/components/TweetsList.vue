@@ -1,6 +1,6 @@
 <template>
     <div class="tweets-container">
-        <h2>
+        <h2 v-if="movie">
             <i class="fa fa-twitter"></i>Relevant Tweets for
             <em>{{ movie.title }}</em>
         </h2>
@@ -31,54 +31,34 @@
 </template>
 
 <script>
-// import Codebird from "../../codebird.js";
 export default {
     name: "TweetsList",
     props: {
         movie: Object,
         tweets: Array,
     },
-    data: function () {
-        return {
-            cb: null,
-        };
-    },
-    computed: function () {
-        return {};
-    },
-    created() {
-        //this only needs to be done once, get bearer token for OAuth Twitter
-        // this.cb = new Codebird();
-        // this.cb.setConsumerKey(
-        //     "dJubmPzGfaSiM4z6enh5Pw",
-        //     "QdulpG2gTkfftg2yaGxYYgbqTwF3BoARsqizRi54rc"
-        // );
-        // this.cb.__call("oauth2_token", {}, function (reply) {
-        //     var bearer_token = reply.access_token;
-        // });
-    },
-    methods: {
-        getTweets: function (movie) {
-            // this.cb.__call(
-            //     "search_tweets",
-            //     "q=" + encodeURIComponent(movie.title) + "&lang=en",
-            //     function (response) {
-            //         debugger;
-            //         //some jquery promise action
-            //         //that.reset(that.parse(response));
-            //         //that.promise.resolve();
-            //     },
-            //     true // this parameter required
-            // );
-        },
-        parse: function (response) {
-            return response.statuses;
-        },
-    },
 };
 </script>
 
 <style lang="scss" scoped>
+.tweets-container {
+    width: 500px;
+    border: 3px solid blue;
+    border-radius: 5px;
+    margin: auto;
+}
+
+// .tweets {
+//     display: inline-block;
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     left: 50%;
+//     overflow-y: scroll;
+//     border: 1px solid #cccccc;
+// }
+
 li {
     list-style-type: none;
 }

@@ -94,12 +94,6 @@ body,
 .movies {
     margin: auto;
 }
-.tweets-container {
-    width: 500px;
-    border: 3px solid blue;
-    border-radius: 5px;
-    margin: auto;
-}
 img.resize {
     width: 200px;
     height: auto;
@@ -158,15 +152,5 @@ ul img {
 }
 #movie-info-container {
     position: relative;
-}
-#tweets-container {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    overflow-y: scroll;
-    border: 1px solid #cccccc;
 }
 </style>
