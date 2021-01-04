@@ -169,26 +169,4 @@ ul img {
     overflow-y: scroll;
     border: 1px solid #cccccc;
 }
-#saved-movies {
-    font-size: 1.5em;
-    li {
-        list-style-type: none;
-    }
-}
-.carousel-inner .active.left {
-    left: -33%;
-}
-.carousel-inner .active.right {
-    left: 33%;
-}
-.carousel-inner .next {
-    left: 33%;
-}
-.carousel-inner .prev {
-    left: -33%;
-}
-.carousel-control.left,
-.carousel-control.right {
-    background-image: none;
-}
 </style>
