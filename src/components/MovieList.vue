@@ -77,23 +77,6 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-    padding-top: 50px;
-}
-.starter-template {
-    padding: 40px 15px;
-    text-align: center;
-}
-html,
-body,
-#map-canvas {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-}
-.movies {
-    margin: auto;
-}
 img.resize {
     width: 200px;
     height: auto;
@@ -138,19 +121,8 @@ ul img {
 .poster.selected img {
     border: 3px solid blue;
 }
-.item {
+.container .item {
     display: inline-block;
     margin: 5px;
-}
-#search-movies-form {
-    margin-top: 20px;
-    input[name="search-movie"] {
-        width: 150px;
-        border-right: 0;
-        border-radius: 5px 0 0 5px;
-    }
-}
-#movie-info-container {
-    position: relative;
 }
 </style>
